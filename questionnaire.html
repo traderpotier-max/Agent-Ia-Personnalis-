@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire — VOTRE IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0a0f;--surface:#111118;--surface2:#1a1a26;--accent:#c9a84c;--accent2:#e8c97a;--text:#f0ede8;--muted:#8a8799;--border:rgba(201,168,76,0.2)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 30px;background:rgba(10,10,15,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.08);display:flex;align-items:center;justify-content:space-between
+    }
+    .brand{font-family:"Playfair Display",serif;font-weight:900;color:var(--accent);letter-spacing:2px}
+    .back{color:var(--muted)} .back:hover{color:var(--accent)}
+    .nav-right{display:flex;gap:12px;align-items:center}
+    .wrap{max-width:900px;margin:120px auto 80px;padding:0 30px}
+    .badge{display:inline-block;border:1px solid var(--border);color:var(--accent);padding:6px 14px;border-radius:999px;font-size:.75rem;letter-spacing:3px;text-transform:uppercase}
+    h1{font-family:"Playfair Display",serif;font-size:2.4rem;margin:16px 0}
+    .sub{color:var(--muted);margin-bottom:14px}
+    .tags{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 26px}
+    .tag{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:999px;font-size:.8rem}
+    .prog{height:3px;background:var(--surface);border-radius:999px;overflow:hidden;margin:20px 0 26px}
+    .prog .fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .2s ease}
+    .fg{margin:18px 0}
+    .fg .meta{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+    .num{font-family:"Playfair Display",serif;color:var(--accent);opacity:.5}
+    .lab{text-transform:uppercase;letter-spacing:2px;font-size:.8rem;color:var(--muted)}
+    input,textarea{
+      width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:16px 20px;border-radius:12px;font-size:1rem;outline:none;transition:border .2s ease,background .2s ease
+    }
+    input:focus,textarea:focus{border-color:var(--accent);background:var(--surface2)}
+    .msg{display:none;color:#e05555;font-size:.85rem;margin-top:6px}
+    .fg.bad input,.fg.bad textarea{border-color:#e05555}
+    .fg.bad .msg{display:block}
+    .fg.good input,.fg.good textarea{border-color:rgba(100,200,130,.4)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 24px;border-radius:12px;background:var(--accent);color:#0a0a0f;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:transform .2s ease,background .2s ease;width:100%}
+    .btn:hover{background:var(--accent2);transform:translateY(-2px)}
+    .note{color:var(--muted);text-align:center;margin-top:12px}
+    .btn-sm{padding:10px 14px;border-radius:10px;background:var(--accent);color:#0a0a0f;font-weight:700;letter-spacing:.5px}
+    @media (max-width:900px){.wrap{margin:120px auto 60px}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="votre-ia.html">VOTRE IA</a>
+    <a class="back" href="votre-ia.html">← Retour</a>
+  </header>
+
+  <main class="wrap">
+    <div class="badge">Questionnaire</div>
+    <h1>Avant de créer votre <strong>agent IA</strong>, dites‑nous tout.</h1>
+    <div class="sub">Plus vous êtes précis, meilleure sera votre IA. Cela prend 3 minutes.</div>
+    <div class="tags">
+      <div class="tag">⚡ Livraison en 48h</div>
+      <div class="tag">🛡 Satisfait ou remboursé</div>
+      <div class="tag">💳 79,99€ paiement unique</div>
+    </div>
+    <div class="prog"><div class="fill" id="progFill"></div></div>
+
+    <div class="fg" data-required="true">
+      <div class="meta"><div class="num">01</div><div class="lab">Identité — Prénom</div></div>
+      <input id="firstName" placeholder="Votre prénom*">
+      <div class="msg">Champ requis</div>
+    </div>
+    <div class="fg" data-required="true">
+      <div class="meta"><div class="num">01</div><div class="lab">Identité — Nom</div></div>
+      <input id="lastName" placeholder="Votre nom*">
+      <div class="msg">Champ requis</div>
+    </div>
+    <div class="fg" data-required="true">
+      <div class="meta"><div class="num">02</div><div class="lab">Contact — Email</div></div>
+      <input id="email" placeholder="nom@exemple.com*">
+      <div class="msg">Email invalide</div>
+    </div>
+    <div class="fg" data-required="true">
+      <div class="meta"><div class="num">03</div><div class="lab">Domaine</div></div>
+      <input id="sector" placeholder="Dans quel secteur évoluez‑vous ?*">
+      <div class="msg">Champ requis</div>
+    </div>
+    <div class="fg" data-required="true">
+      <div class="meta"><div class="num">04</div><div class="lab">Projet</div></div>
+      <textarea id="project" rows="5" placeholder="Décrivez votre projet...*"></textarea>
+      <div class="msg">Champ requis</div>
+    </div>
+    <div class="fg" data-required="true">
+      <div class="meta"><div class="num">05</div><div class="lab">Fonctionnalités</div></div>
+      <textarea id="features" rows="8" placeholder="Listez toutes les fonctionnalités souhaitées...*"></textarea>
+      <div class="msg">Champ requis</div>
+    </div>
+    <div class="fg" data-required="false">
+      <div class="meta"><div class="num">06</div><div class="lab">Précisions (facultatif)</div></div>
+      <textarea id="extras" rows="4" placeholder="Autres demandes, contraintes, inspirations..."></textarea>
+    </div>
+    <div class="fg" data-required="true">
+      <div class="meta"><div class="num">07</div><div class="lab">Nom de l’IA</div></div>
+      <input id="aiName" placeholder="Quel nom souhaitez‑vous donner à votre IA ?*">
+      <div class="msg">Champ requis</div>
+    </div>
+
+    <button id="submitBtn" class="btn">✦ Valider mes réponses et payer — 79,99€</button>
+    <div class="note">🔒 Paiement sécurisé via Stripe · 🛡 Satisfait ou remboursé · ⚡ Livraison en 48h</div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    var EJ_KEY = 'lWZbwuDZY0reFiKI_';
+    var EJ_SVC = 'service_stoj7w6';
+    var EJ_TPL = 'template_doou8zw';
+    const EMAIL_TO = 'pierre.perthuischaud@gmail.com';
+    const STRIPE_URL = "https://buy.stripe.com/eVq9AS2LZ7VUbnG56P0sU03";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const requiredIds = ["firstName","lastName","email","sector","project","features","aiName"];
+    const fields = {
+      firstName: document.getElementById("firstName"),
+      lastName: document.getElementById("lastName"),
+      email: document.getElementById("email"),
+      sector: document.getElementById("sector"),
+      project: document.getElementById("project"),
+      features: document.getElementById("features"),
+      extras: document.getElementById("extras"),
+      aiName: document.getElementById("aiName"),
+    };
+    const progFill = document.getElementById("progFill");
+    const submitBtn = document.getElementById("submitBtn");
+    Object.values(fields).forEach(el=>{
+      el.addEventListener("input",()=>{
+        if(el.closest(".fg").classList.contains("bad")) validateField(el);
+        updateProgress();
+      });
+    });
+    function validateField(el){
+      const wrap = el.closest(".fg");
+      const required = wrap.getAttribute("data-required")==="true";
+      let ok = true;
+      if(required){
+        if(!el.value.trim()) ok=false;
+        if(el.id==="email" && !emailRegex.test(el.value.trim())) ok=false;
+      }
+      wrap.classList.toggle("bad", !ok);
+      wrap.classList.toggle("good", ok);
+      return ok;
+    }
+    function updateProgress(){
+      const total = requiredIds.length;
+      let count = 0;
+      requiredIds.forEach(id=>{
+        const el = fields[id];
+        if(id==="email"){ if(emailRegex.test(el.value.trim())) count++; }
+        else if(el.value.trim()) count++;
+      });
+      const pct = Math.round((count/total)*100);
+      progFill.style.width = pct + "%";
+    }
+    function firstInvalid(){
+      for(const id of requiredIds){
+        const el = fields[id];
+        if(id==="email"){ if(!emailRegex.test(el.value.trim())) return el; }
+        else if(!el.value.trim()) return el;
+      }
+      return null;
+    }
+    function buildMessage(){
+      const lines = [];
+      const now = new Date().toLocaleString("fr-FR");
+      lines.push("Nouvelle commande IA");
+      lines.push("Date: " + now);
+      lines.push("Prénom: " + fields.firstName.value.trim());
+      lines.push("Nom: " + fields.lastName.value.trim());
+      lines.push("Email: " + fields.email.value.trim());
+      lines.push("Secteur: " + fields.sector.value.trim());
+      lines.push("Projet: " + fields.project.value.trim());
+      lines.push("Fonctionnalités: " + fields.features.value.trim());
+      lines.push("Précisions: " + (fields.extras.value.trim() || "-"));
+      lines.push("Nom de l’IA: " + fields.aiName.value.trim());
+      return lines.join("\n");
+    }
+    async function sendEmail(message, subject){
+      try{
+        const isConfigured = (EJ_KEY && EJ_TPL && EJ_SVC && EJ_SVC !== 'METTRE_LE_SERVICE_ID');
+        if(window.emailjs && isConfigured){
+          emailjs.init(EJ_KEY);
+          await emailjs.send(EJ_SVC, EJ_TPL, { message: message, subject: subject, to_email: EMAIL_TO });
+        }
+      }catch(e){}
+    }
+    function downloadFallback(filename, text){
+      const blob = new Blob([text], {type:"text/plain"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
+    async function go(){
+      let okAll = true;
+      document.querySelectorAll(".fg").forEach(f=>{
+        const input = f.querySelector("input,textarea");
+        if(!validateField(input)) okAll=false;
+      });
+      const badEl = firstInvalid();
+      if(!okAll){
+        if(badEl){ badEl.scrollIntoView({behavior:"smooth",block:"center"}); badEl.focus(); }
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Redirection...";
+      const subject = "Nouvelle commande IA - " + fields.firstName.value.trim() + " " + fields.lastName.value.trim();
+      const msg = buildMessage();
+      const isConfigured = (EJ_KEY && EJ_TPL && EJ_SVC && EJ_SVC !== 'METTRE_LE_SERVICE_ID');
+      if(!isConfigured){
+        const now = new Date();
+        const fname = "commande-IA-" + now.getFullYear() + String(now.getMonth()+1).padStart(2,"0") + String(now.getDate()).padStart(2,"0") + "-" + String(now.getHours()).padStart(2,"0") + String(now.getMinutes()).padStart(2,"0") + ".txt";
+        downloadFallback(fname, subject + "\n\n" + msg);
+      } else {
+        await sendEmail(msg, subject);
+      }
+      window.location.href = STRIPE_URL;
+    }
+    submitBtn.addEventListener("click", go);
+    updateProgress();
+  </script>
+</body>
+</html>
