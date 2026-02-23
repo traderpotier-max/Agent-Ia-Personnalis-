@@ -137,6 +137,18 @@
     .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
     .deliver .item{background:var(--bg);padding:50px 40px;border-radius:10px;transition:transform .2s ease,background .2s ease}
     .deliver .item:hover{transform:translateY(-4px);background:var(--surface2)}
+    .examples{background:var(--bg)}
+    .eg-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+    .eg-card{background:var(--surface);border:1px solid var(--border);padding:36px;border-radius:14px;transition:transform .2s ease,background .2s ease}
+    .eg-card:hover{transform:translateY(-4px);background:var(--surface2)}
+    .eg-tag{display:inline-block;border:1px solid var(--border);color:var(--accent);padding:6px 12px;border-radius:999px;font-size:.75rem;letter-spacing:3px;text-transform:uppercase}
+    .eg-h{font-family:"Playfair Display",serif;font-size:1.5rem;margin:12px 0 8px}
+    .eg-p{color:var(--muted);line-height:1.8}
+    .eg-feature{background:var(--surface);border:1px solid var(--border);padding:36px;border-radius:14px;margin-bottom:24px}
+    .eg-sub{margin:14px 0 6px;font-weight:700}
+    .eg-list{color:var(--muted);line-height:1.8;margin:0 0 8px 18px}
+    .eg-quote{background:var(--surface2);border-left:2px solid var(--accent);padding:12px 14px;border-radius:10px;color:var(--muted);margin:8px 0}
+    .eg-note{margin-top:24px;text-align:center;color:var(--muted)}
     .testi{max-width:1200px;margin:0 auto;text-align:center}
     .testi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:26px}
     .q{font-family:"Playfair Display",serif;font-size:3rem;color:var(--accent);opacity:.5;margin:0}
@@ -176,6 +188,7 @@
       .grid-2{grid-template-columns:1fr}
       .cards{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
+      .eg-grid{grid-template-columns:1fr}
       .row{grid-template-columns:60px 1fr;gap:20px}
       .arrow{display:none}
       .footer{flex-direction:column;gap:12px;text-align:center}
@@ -329,6 +342,71 @@
           <div class="item reveal">🛡 <strong>Garantie satisfait</strong><br><span class="muted">Remboursement intégral si vous n’êtes pas satisfait.</span></div>
           <div class="item reveal">🎯 <strong>Sur mesure à 100%</strong><br><span class="muted">Pas de template générique, construit from scratch pour vous.</span></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section examples">
+      <div class="container">
+        <div class="reveal" style="text-align:center">
+          <div class="label">Exemples</div>
+          <div class="title">5 exemples d’agents IA personnalisés</div>
+        </div>
+        <div class="eg-feature reveal">
+          <div class="eg-tag">APEX</div>
+          <div class="eg-h">Trader swing — APEX, mentor de discipline</div>
+          <div class="eg-sub">Client — Demande initiale</div>
+          <div class="eg-quote">"Je suis trader depuis 2 ans, je fais du swing trading sur les actions US et un peu de crypto. Ma plus grande faiblesse c'est que je coupe mes gains trop vite et je laisse courir mes pertes. J'ai une stratégie basée sur les niveaux de support/résistance et les moyennes mobiles 50/200. Mon capital c'est 5 000€ et je veux risquer max 1% par trade."</div>
+          <div class="eg-sub">Ce qu’on lui a livré — APEX configuré sur‑mesure</div>
+          <div class="eg-sub">🧠 Personnalité & Ton</div>
+          <p class="eg-p">APEX a été programmé comme un mentor direct, sans filtre, bienveillant mais exigeant. Il tutoie le trader, le challenge et ne valide jamais un trade qui ne respecte pas ses règles.</p>
+          <div class="eg-sub">📐 Stratégie intégrée</div>
+          <ul class="eg-list">
+            <li>Entrée uniquement sur rebond confirmé sur support/résistance clé</li>
+            <li>Confirmation obligatoire des MM50 et MM200</li>
+            <li>Stop loss calculé automatiquement à 1% du capital (50€ max par trade)</li>
+            <li>Take profit minimum 2:1 — refus de tout trade en dessous</li>
+          </ul>
+          <div class="eg-sub">💬 Exemples de ce qu’APEX dit au quotidien</div>
+          <p class="eg-p"><strong>Avant un trade:</strong></p>
+          <div class="eg-quote">"Tu m'as envoyé ce setup sur NVIDIA. Le prix est sur un support clé, MM50 au‑dessus, MM200 en dessous — confluence partielle. Mais ta bougie de 4h n'est pas encore clôturée. Tu attends la confirmation ou tu anticipes encore ?"</div>
+          <p class="eg-p"><strong>Quand il veut couper un gain trop tôt:</strong></p>
+          <div class="eg-quote">"Ton TP est à 3:1 et t'es à 1,5:1. Tu veux sortir pourquoi exactement ? Le setup a changé ou c'est l'impatience ? Réponds‑moi avant de toucher quoi que ce soit."</div>
+          <p class="eg-p"><strong>Quand il laisse courir une perte:</strong></p>
+          <div class="eg-quote">"Ton stop était à 50€. Le prix l'a touché. Pourquoi tu es encore en position ? On en avait parlé — un stop touché c'est une décision déjà prise à tête reposée. Ferme le trade et on analyse après."</div>
+          <div class="eg-sub">📊 Rapport hebdomadaire automatique</div>
+          <div class="eg-quote">"Semaine du 10 au 14 février — 4 trades pris, 2 gagnants, 2 perdants. Ratio moyen : 1,8:1 — en dessous de ton objectif 2:1. Tu as coupé 2 gains avant le TP. Pertes contenues à 0,8% du capital — bonne discipline sur les stops cette semaine. Point à travailler : la patience sur les trades gagnants. On en reparle lundi ?"</div>
+          <div class="eg-sub">🎯 Check‑in quotidien pré‑session</div>
+          <div class="eg-quote">"Bonjour. Avant de commencer — dis‑moi tes 3 règles d'entrée. Et c'est quoi ton état d'esprit ce matin sur 10 ?"</div>
+          <p class="eg-p"><strong>Résultat:</strong> un agent qui connaît la stratégie par cœur, challenge avant chaque décision, génère des rapports automatiquement et agit comme un associé silencieux disponible à toute heure.</p>
+        </div>
+        <div class="eg-grid">
+          <div class="eg-card reveal">
+            <div class="eg-tag">LEX</div>
+            <div class="eg-h">Avocat indépendant — IA juridique spécialisée</div>
+            <p class="eg-p">Un avocat en droit des affaires qui reçoit chaque jour des questions de clients sur les contrats, les litiges, les obligations légales. LEX connaît son domaine de spécialité, répond avec un niveau d’expertise élevé dans son ton et redirige vers lui uniquement quand la situation nécessite une consultation officielle.</p>
+          </div>
+          <div class="eg-card reveal">
+            <div class="eg-tag">KIRA</div>
+            <div class="eg-h">Agence e‑commerce — IA de gestion & rapports</div>
+            <p class="eg-p">Un gérant de boutique en ligne qui vend sur plusieurs plateformes. KIRA analyse chaque semaine les ventes, les produits qui performent, les stocks critiques et génère un rapport synthétique avec des recommandations concrètes pour la semaine suivante.</p>
+          </div>
+          <div class="eg-card reveal">
+            <div class="eg-tag">VOLT</div>
+            <div class="eg-h">Coach sportif en ligne — IA spécialisée fitness</div>
+            <p class="eg-p">Un coach qui suit des dizaines de clients à distance. VOLT connaît ses programmes d’entraînement, ses méthodes de progression et répond aux questions de ses clients sur les exercices, la récupération et les ajustements de programme — avec le même niveau d’expertise que lui.</p>
+          </div>
+          <div class="eg-card reveal">
+            <div class="eg-tag">FISC</div>
+            <div class="eg-h">Cabinet comptable — IA de planification fiscale</div>
+            <p class="eg-p">Un comptable qui passe des heures à rappeler à ses clients leurs échéances fiscales et à répondre aux mêmes questions sur la TVA, les charges, les déclarations. FISC planifie les rappels automatiques, répond aux questions courantes et génère des résumés clairs des obligations du mois.</p>
+          </div>
+          <div class="eg-card reveal">
+            <div class="eg-tag">ARIA</div>
+            <div class="eg-h">Agence immobilière — IA de qualification clients</div>
+            <p class="eg-p">Une agence qui reçoit des dizaines de demandes par semaine. ARIA qualifie chaque prospect automatiquement — budget, type de bien, délai — rédige un résumé du profil et le transmet à l’agent humain uniquement quand le client est prêt à visiter.</p>
+          </div>
+        </div>
+        <div class="eg-note reveal">Chaque IA est construite autour d’un seul expert et d’un seul métier. C’est ce qui la rend plus performante qu’un outil généraliste.</div>
       </div>
     </section>
 
